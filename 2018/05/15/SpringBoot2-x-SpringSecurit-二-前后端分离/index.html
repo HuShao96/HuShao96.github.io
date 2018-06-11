@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="SpringBoot,SpringSecurity," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="遇到前后端分离时SpringSecurity权限的处理和之前的也有点差异，本文讲述Spring Boot2.x整合Spring Security前后端分离，对上一篇的配置进行修改，如果不懂的先看上一篇文章SpringBoot2.x+SpringSecurity(一)安全配置整合">
+<meta name="keywords" content="SpringBoot,SpringSecurity">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SpringBoot2.x+SpringSecurit(二)前后端分离">
+<meta property="og:url" content="https://hushao96.github.io/2018/05/15/SpringBoot2-x-SpringSecurit-二-前后端分离/index.html">
+<meta property="og:site_name" content="胡少的个人博客">
+<meta property="og:description" content="遇到前后端分离时SpringSecurity权限的处理和之前的也有点差异，本文讲述Spring Boot2.x整合Spring Security前后端分离，对上一篇的配置进行修改，如果不懂的先看上一篇文章SpringBoot2.x+SpringSecurity(一)安全配置整合">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://gitee.com/uploads/images/2018/0605/112303_37c64e1a_1487485.png">
+<meta property="og:image" content="https://gitee.com/uploads/images/2018/0605/112428_dd0a9bf1_1487485.png">
+<meta property="og:updated_time" content="2018-06-07T04:03:21.822Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SpringBoot2.x+SpringSecurit(二)前后端分离">
+<meta name="twitter:description" content="遇到前后端分离时SpringSecurity权限的处理和之前的也有点差异，本文讲述Spring Boot2.x整合Spring Security前后端分离，对上一篇的配置进行修改，如果不懂的先看上一篇文章SpringBoot2.x+SpringSecurity(一)安全配置整合">
+<meta name="twitter:image" content="https://gitee.com/uploads/images/2018/0605/112303_37c64e1a_1487485.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://hushao96.github.io/2018/05/15/SpringBoot2-x-SpringSecurit-二-前后端分离/"/>
+
+
+
+
+
+  <title>SpringBoot2.x+SpringSecurit(二)前后端分离 | 胡少的个人博客</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?44fa921b0ee8db2d6419539217c9bb70";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">胡少的个人博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">博客</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://hushao96.github.io/2018/05/15/SpringBoot2-x-SpringSecurit-二-前后端分离/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="胡少">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://gitee.com/uploads/85/1487485_HuGunShao.png?1526635696">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="胡少的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">SpringBoot2.x+SpringSecurit(二)前后端分离</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-15T18:25:03+08:00">
+                2018-05-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaWeb/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaWeb</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h4 id="遇到前后端分离时SpringSecurity权限的处理和之前的也有点差异，本文讲述Spring-Boot2-x整合Spring-Security前后端分离，对上一篇的配置进行修改，如果不懂的先看上一篇文章SpringBoot2-x-SpringSecurity-一-安全配置整合"><a href="#遇到前后端分离时SpringSecurity权限的处理和之前的也有点差异，本文讲述Spring-Boot2-x整合Spring-Security前后端分离，对上一篇的配置进行修改，如果不懂的先看上一篇文章SpringBoot2-x-SpringSecurity-一-安全配置整合" class="headerlink" title="遇到前后端分离时SpringSecurity权限的处理和之前的也有点差异，本文讲述Spring Boot2.x整合Spring Security前后端分离，对上一篇的配置进行修改，如果不懂的先看上一篇文章SpringBoot2.x+SpringSecurity(一)安全配置整合"></a>遇到前后端分离时SpringSecurity权限的处理和之前的也有点差异，本文讲述Spring Boot2.x整合Spring Security前后端分离，对上一篇的配置进行修改，如果不懂的先看上一篇文章<a href="http://hugunshao.gitee.io/blog/2018/06/05/SpringBoot2.x-SpringSecurity-%E4%B8%80%E5%AE%89%E5%85%A8%E9%85%8D%E7%BD%AE%E6%95%B4%E5%90%88/" target="_blank" rel="noopener">SpringBoot2.x+SpringSecurity(一)安全配置整合</a></h4><a id="more"></a>
+<h2 id="1-Spring-Securit配置"><a href="#1-Spring-Securit配置" class="headerlink" title="1. Spring Securit配置"></a>1. Spring Securit配置</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">@Configuration</span><br><span class="line">@EnableWebSecurity</span><br><span class="line">@EnableGlobalMethodSecurity(prePostEnabled=true)</span><br><span class="line">public class WebSecurityConfig extends WebSecurityConfigurerAdapter&#123;</span><br><span class="line">    @Autowired</span><br><span class="line">    private UserDetailsService userDetailsService;</span><br><span class="line"></span><br><span class="line">    @Autowired</span><br><span class="line">    private AuthSuccessHandler authSuccessHandler;</span><br><span class="line"></span><br><span class="line">    @Autowired</span><br><span class="line">    private AuthFailHandler authFailHandler;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    protected void configure(AuthenticationManagerBuilder auth) throws Exception &#123;</span><br><span class="line">        auth.userDetailsService(userDetailsService).passwordEncoder(new BCryptPasswordEncoder());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    protected void configure(HttpSecurity http) throws Exception &#123;</span><br><span class="line">        ExpressionUrlAuthorizationConfigurer&lt;HttpSecurity&gt;.ExpressionInterceptUrlRegistry registry=http.authorizeRequests();</span><br><span class="line">        registry.and()</span><br><span class="line">                .formLogin()</span><br><span class="line">                .loginPage(&quot;/u/noLogin&quot;)</span><br><span class="line">                .loginProcessingUrl(&quot;/login&quot;)</span><br><span class="line">                .permitAll()</span><br><span class="line">                //成功处理类</span><br><span class="line">                .successHandler(authSuccessHandler)</span><br><span class="line">                //失败处理类</span><br><span class="line">                .failureHandler(authFailHandler)</span><br><span class="line">                .and()</span><br><span class="line">                .logout()</span><br><span class="line">                .permitAll()</span><br><span class="line">                .and()</span><br><span class="line">                .authorizeRequests()</span><br><span class="line">                //任何请求</span><br><span class="line">                .anyRequest()</span><br><span class="line">                //都需要认证</span><br><span class="line">                .authenticated()</span><br><span class="line">                .and()</span><br><span class="line">                //关闭跨站请求防护</span><br><span class="line">                .csrf().disable()</span><br><span class="line">                .and()</span><br><span class="line">                //自定义权限拒绝处理类</span><br><span class="line">                .exceptionHandling().accessDeniedHandler(authAccessDeniedHandler)</span><br><span class="line">               </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里的successHandler(）以及failureHandler()就是当验证成功时以及失败时调用自己写的方法，.exceptionHandling().accessDeniedHandler(）依然也是一样的，因为我我们不用默认的了；</p>
+<h2 id="2-成功处理类"><a href="#2-成功处理类" class="headerlink" title="2. 成功处理类"></a>2. 成功处理类</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">@Slf4j</span><br><span class="line">@Component</span><br><span class="line">public class AuthSuccessHandler implements AuthenticationSuccessHandler &#123;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException &#123;</span><br><span class="line">      </span><br><span class="line">        log.info(&quot;登陆成功&quot;);</span><br><span class="line">        </span><br><span class="line">        String msg=JSON.toJSONString(ServerResponse.Success(authentication.getPrincipal()));</span><br><span class="line">        ServerResponse.out(response,msg);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>当登录验证成功时由AuthenicationSuccessHandler策略接口控制，实现onAuthenticationSuccess方法，authentication.getPrincipal()是当前登录成功时的用户信息，以json返回给前端。</p>
+<h2 id="3-失败处理类"><a href="#3-失败处理类" class="headerlink" title="3. 失败处理类"></a>3. 失败处理类</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">@Component</span><br><span class="line">@Slf4j</span><br><span class="line">public class AuthFailHandler implements AuthenticationFailureHandler &#123;</span><br><span class="line">    @Override</span><br><span class="line">    public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response, AuthenticationException exception) throws IOException, ServletException &#123;</span><br><span class="line">        String msg=null;</span><br><span class="line">        if (exception instanceof UsernameNotFoundException || exception instanceof BadCredentialsException) &#123;</span><br><span class="line">            msg=&quot;用户名或密码输入错误，登录失败!&quot;;</span><br><span class="line">        &#125; else if (exception instanceof DisabledException) &#123;</span><br><span class="line">           msg=&quot;账户被禁用，登录失败，请联系管理员!&quot;;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            msg=&quot;登录失败！&quot;;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        msg=JSON.toJSONString(ServerResponse.Error(ResponseCode.INTERNAL_SERVER_ERROR.getCode(),msg));</span><br><span class="line">        ServerResponse.out(response,msg);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>当验证失败时由AuthenticationFailureHandlerc策略借口控制，实现 onAuthenticationFailure方法返回错误信息</p>
+<h2 id="4-权限拒绝处理类"><a href="#4-权限拒绝处理类" class="headerlink" title="4. 权限拒绝处理类"></a>4. 权限拒绝处理类</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">@Slf4j</span><br><span class="line">@Component</span><br><span class="line">public class AuthAccessDeniedHandler implements AccessDeniedHandler &#123;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void handle(HttpServletRequest request, HttpServletResponse response, AccessDeniedException accessDeniedException) throws IOException, ServletException &#123;</span><br><span class="line">        log.error(&quot;权限不足！&quot;);</span><br><span class="line">        response.sendError(HttpServletResponse.SC_UNAUTHORIZED, &quot;权限不足！&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="5-测试"><a href="#5-测试" class="headerlink" title="5. 测试"></a>5. 测试</h2><p><img src="https://gitee.com/uploads/images/2018/0605/112303_37c64e1a_1487485.png" alt="输入图片说明"><br>返回的结果：<img src="https://gitee.com/uploads/images/2018/0605/112428_dd0a9bf1_1487485.png" alt="输入图片说明"><br>data里就是当前验证成功的信息，status是自定义返回状态；</p>
+<h2 id="6-小结"><a href="#6-小结" class="headerlink" title="6. 小结"></a>6. 小结</h2><p>在此继续研究下去！</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/SpringBoot/" rel="tag"># SpringBoot</a>
+          
+            <a href="/tags/SpringSecurity/" rel="tag"># SpringSecurity</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/05/05/SpringBoot2.x-SpringSecurity-一安全配置整合/" rel="next" title="SpringBoot2.x+SpringSecurity(一)安全配置整合">
+                <i class="fa fa-chevron-left"></i> SpringBoot2.x+SpringSecurity(一)安全配置整合
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/06/05/SpringBoot2-x-SpringSecurit-JWT-三-前后端分离进阶/" rel="prev" title="SpringBoot2.x+SpringSecurit+JWT(三)前后端分离进阶">
+                SpringBoot2.x+SpringSecurit+JWT(三)前后端分离进阶 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zNzA2My8xMzU5OQ=="></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://gitee.com/uploads/85/1487485_HuGunShao.png?1526635696"
+               alt="胡少" />
+          <p class="site-author-name" itemprop="name">胡少</p>
+           
+              <p class="site-description motion-element" itemprop="description">苏福</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#遇到前后端分离时SpringSecurity权限的处理和之前的也有点差异，本文讲述Spring-Boot2-x整合Spring-Security前后端分离，对上一篇的配置进行修改，如果不懂的先看上一篇文章SpringBoot2-x-SpringSecurity-一-安全配置整合"><span class="nav-number">1.</span> <span class="nav-text">遇到前后端分离时SpringSecurity权限的处理和之前的也有点差异，本文讲述Spring Boot2.x整合Spring Security前后端分离，对上一篇的配置进行修改，如果不懂的先看上一篇文章SpringBoot2.x+SpringSecurity(一)安全配置整合</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Spring-Securit配置"><span class="nav-number"></span> <span class="nav-text">1. Spring Securit配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-成功处理类"><span class="nav-number"></span> <span class="nav-text">2. 成功处理类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-失败处理类"><span class="nav-number"></span> <span class="nav-text">3. 失败处理类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-权限拒绝处理类"><span class="nav-number"></span> <span class="nav-text">4. 权限拒绝处理类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-测试"><span class="nav-number"></span> <span class="nav-text">5. 测试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-小结"><span class="nav-number"></span> <span class="nav-text">6. 小结</span></a></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">胡少</span>
+</div>
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
