@@ -96,18 +96,18 @@
 
 
 
-<meta name="description" content="Java基础很重要，他会让你在写项目的时候避免坑以及提高代码质量等等，本人忽视了这点，所以这次特也写篇博客牢固Java知识要点，好了，话不多说，开始吧！">
+<meta name="description" content="运用Java有一段时间了，前段时间了解了Java8的新特性，感觉简直就是非常棒的一次更新。。下面是我所学习Java8中的一些知识！！">
 <meta name="keywords" content="Java">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Java基础回顾篇以及面试要点！">
-<meta property="og:url" content="https://hushao96.github.io/2018/06/07/Java基础回顾篇以及面试要点！/index.html">
+<meta property="og:title" content="Java8新特性">
+<meta property="og:url" content="https://hushao96.github.io/2018/06/14/Java8新特性/index.html">
 <meta property="og:site_name" content="胡少的个人博客">
-<meta property="og:description" content="Java基础很重要，他会让你在写项目的时候避免坑以及提高代码质量等等，本人忽视了这点，所以这次特也写篇博客牢固Java知识要点，好了，话不多说，开始吧！">
+<meta property="og:description" content="运用Java有一段时间了，前段时间了解了Java8的新特性，感觉简直就是非常棒的一次更新。。下面是我所学习Java8中的一些知识！！">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-07T04:00:28.000Z">
+<meta property="og:updated_time" content="2018-06-13T12:21:04.062Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Java基础回顾篇以及面试要点！">
-<meta name="twitter:description" content="Java基础很重要，他会让你在写项目的时候避免坑以及提高代码质量等等，本人忽视了这点，所以这次特也写篇博客牢固Java知识要点，好了，话不多说，开始吧！">
+<meta name="twitter:title" content="Java8新特性">
+<meta name="twitter:description" content="运用Java有一段时间了，前段时间了解了Java8的新特性，感觉简直就是非常棒的一次更新。。下面是我所学习Java8中的一些知识！！">
 
 
 
@@ -136,13 +136,13 @@
 
 
 
-  <link rel="canonical" href="https://hushao96.github.io/2018/06/07/Java基础回顾篇以及面试要点！/"/>
+  <link rel="canonical" href="https://hushao96.github.io/2018/06/14/Java8新特性/"/>
 
 
 
 
 
-  <title>Java基础回顾篇以及面试要点！ | 胡少的个人博客</title>
+  <title>Java8新特性 | 胡少的个人博客</title>
   
 
 
@@ -329,7 +329,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://hushao96.github.io/2018/06/07/Java基础回顾篇以及面试要点！/">
+    <link itemprop="mainEntityOfPage" href="https://hushao96.github.io/2018/06/14/Java8新特性/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="胡少">
@@ -346,7 +346,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Java基础回顾篇以及面试要点！</h1>
+          <h1 class="post-title" itemprop="name headline">Java8新特性</h1>
         
 
         <div class="post-meta">
@@ -358,8 +358,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-07T17:35:03+08:00">
-                2018-06-07
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-13T20:20:04Z">
+                2018-06-13
               </time>
             
 
@@ -423,102 +423,93 @@
       
 
       
-        <p> <strong>Java基础很重要，他会让你在写项目的时候避免坑以及提高代码质量等等，本人忽视了这点，所以这次特也写篇博客牢固Java知识要点，好了，话不多说，开始吧！</strong></p>
-<a id="more"></a>
-<h4 id="1-Java编译和运行过程"><a href="#1-Java编译和运行过程" class="headerlink" title="1. Java编译和运行过程"></a>1. <strong>Java编译和运行过程</strong></h4><ul>
-<li>源文件由编译器编译成字节码文件（ByteCode）</li>
-<li>字节码有Java虚拟机解释运行</li>
-</ul>
-<h4 id="2-Java面向对象四个基本特性"><a href="#2-Java面向对象四个基本特性" class="headerlink" title="2. Java面向对象四个基本特性"></a>2. <strong>Java面向对象四个基本特性</strong></h4><ul>
-<li>抽象:把具有相同属性和行为的对象被抽象成类</li>
-<li>封装：把对象封装成高度自治和相对封闭的个体，对象属性由自己读取和改变</li>
-<li>继承：把已经存在的类已定义的内容作为自己的，并可加入新内容或修改原来的方法</li>
-<li>多态：不同类的对象对同一消息做出不同反应</li>
-</ul>
-<h4 id="3-Java中对象的生命周期"><a href="#3-Java中对象的生命周期" class="headerlink" title="3.  Java中对象的生命周期"></a>3.  <strong>Java中对象的生命周期</strong></h4><ul>
-<li>创建阶段–&gt;应用阶段–&gt;不可见阶段–&gt;不可达阶段–&gt;收集阶段–&gt;终结阶段–&gt;对象空间重新分配阶段</li>
-</ul>
-<h4 id="4-Java-8种数据类型"><a href="#4-Java-8种数据类型" class="headerlink" title="4.  Java 8种数据类型"></a>4.  <strong>Java 8种数据类型</strong></h4><ul>
-<li>byte：1个字节</li>
-<li>short2个字节</li>
-<li>int：4个字节</li>
-<li>long：8个字节</li>
-<li>float：4个字节</li>
-<li>duble：8个字节</li>
-<li>boolean：2个字节</li>
-<li>char ：1位</li>
-</ul>
-<h4 id="5-与equals区别"><a href="#5-与equals区别" class="headerlink" title="5.  ==与equals区别"></a>5.  <strong>==与equals区别</strong></h4><ul>
-<li>==：比较两个对象的地址</li>
-<li>equals：比较两个对象内容</li>
-</ul>
-<h4 id="6-String，StringBuffer，StringBuilder区别"><a href="#6-String，StringBuffer，StringBuilder区别" class="headerlink" title="6.  String，StringBuffer，StringBuilder区别"></a>6.  <strong>String，StringBuffer，StringBuilder区别</strong></h4><ul>
-<li>String：内容不可变，底层使用的是不可变的字符数组（<code>private final char value[]</code>）</li>
-<li>StringBuffer:内容可变，底层使用的是可变字符数组（<code>char [] vale</code>），线程安全</li>
-<li>StringBuilder:内容可变，底层使用的是可变字符数组（<code>char [] vale</code>），线程不安全，效率相对于StringBuffer高些。</li>
-</ul>
-<h4 id="7-ArrayList与LinkedList区别"><a href="#7-ArrayList与LinkedList区别" class="headerlink" title="7.  ArrayList与LinkedList区别"></a>7.  <strong>ArrayList与LinkedList区别</strong></h4><ul>
-<li>ArrayList：底层使用的是数组实现，查询用ArrayList，因为LinkedList需要移动指针</li>
-<li>LinkedList：底层使用的是链表，更新删除用LinkedList，因为ArrayList需要移动数据</li>
-</ul>
-<h4 id="8-HashMap和HashTable的区别"><a href="#8-HashMap和HashTable的区别" class="headerlink" title="8.  HashMap和HashTable的区别"></a>8.  <strong>HashMap和HashTable的区别</strong></h4><ul>
-<li>相同点:都是Key-value的数据</li>
-<li>HashMap：key和value可以为null，线程不安全，效率高</li>
-<li>hashtable：Key和value不可为null，线程安全，效率低</li>
-<li>想线程安全，效率高使用ConcurrentHashMap：把整个Map分成N个Segment（类似HashTable）</li>
-</ul>
-<h4 id="9-借口-interface-和抽象类-abstract-class"><a href="#9-借口-interface-和抽象类-abstract-class" class="headerlink" title="9.  借口(interface)和抽象类(abstract class)"></a>9.  <strong>借口(interface)和抽象类(abstract class)</strong></h4><ul>
-<li>抽象类中可有抽象方法和具体方法，接口中的方法都是抽象方法（注意：JDK1.8后接口添加了一种默认方法-default和静态方法。）</li>
-</ul>
-<p>静态方法：默认方法允许接口方法定义默认实现，而所有子类都将拥有该方法及实现。</p>
-<p>静态方法：由于它是静态的，所以由接口定义的静态方法可以独立于任何对象被调用。因此，调用静态方法不需要实现接口。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public interface TestInter &#123;</span><br><span class="line">    default String getDefault()&#123;</span><br><span class="line">        return &quot;default&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">    static String getStatic()&#123;</span><br><span class="line">        return &quot;static&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <h3 id="运用Java有一段时间了，前段时间了解了Java8的新特性，感觉简直就是非常棒的一次更新。。下面是我所学习Java8中的一些知识！！"><a href="#运用Java有一段时间了，前段时间了解了Java8的新特性，感觉简直就是非常棒的一次更新。。下面是我所学习Java8中的一些知识！！" class="headerlink" title="运用Java有一段时间了，前段时间了解了Java8的新特性，感觉简直就是非常棒的一次更新。。下面是我所学习Java8中的一些知识！！"></a>运用Java有一段时间了，前段时间了解了Java8的新特性，感觉简直就是非常棒的一次更新。。下面是我所学习Java8中的一些知识！！</h3><a id="more"></a>
+<h4 id="1-Lambda表达式"><a href="#1-Lambda表达式" class="headerlink" title="1. Lambda表达式"></a>1. Lambda表达式</h4><p>Lambda表达式包含：（参数）-&gt;{正文}；</p>
+<ol>
+<li>参数：参数为一个时无需加小括号，没有参数或需要参数都需要加小括号</li>
+<li>箭头：-&gt;</li>
+<li>正文：一条语句无需大括号，如需要写多条语句加上大括号；</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">//java正常写法</span><br><span class="line">new Thread(new Runnable() &#123;</span><br><span class="line">    @Override</span><br><span class="line">    public void run() &#123;</span><br><span class="line">        System.out.println(&quot;run......&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;).start();</span><br><span class="line"></span><br><span class="line">//java8 Lambda表达式</span><br><span class="line">new Thread(()-&gt;System.out.println(&quot;Lambda.....&quot;)).start();</span><br></pre></td></tr></table></figure>
+<p>接口只有一个方法可以写Lambda了。。。。。下面是重点。</p>
+<h4 id="2-Stream-API（java-util-stream-）"><a href="#2-Stream-API（java-util-stream-）" class="headerlink" title="2. Stream API（java.util.stream.*）"></a>2. Stream API（java.util.stream.*）</h4><p> <strong>我们可以运用stream执行非常复杂的查找，过滤和映射数据等操作</strong> 。 </p>
+<p> <strong>注意：</strong></p>
 <ul>
-<li>类可以实现（implements）多个接口但只能继承（extends）一个抽象类</li>
-<li>接口中的成员都是public ；抽象类的成员可以是private，protected，public（注意：JDK1.9之后：接口支持私有化）</li>
-</ul>
-<h4 id="10-字符流和字节流"><a href="#10-字符流和字节流" class="headerlink" title="10.  字符流和字节流"></a>10.  <strong>字符流和字节流</strong></h4><ul>
-<li>字符流处理的基本单位是字符（Java中的字符是16位的），输入流以Reader为基础，输出流以Writer为基础，常用读取字符数据；</li>
-<li>字节流的基本单位是字节（Java中的字节是8位的），输入流以 InputStream为基础，输出流以 OutputStream为基础，常用读取二进制文件也就是对文件的操作；</li>
-</ul>
-<h4 id="11-Java线程"><a href="#11-Java线程" class="headerlink" title="11.  Java线程"></a>11.  <strong>Java线程</strong></h4><ul>
-<li>Java多线程的实现：继承Thread类重写run函数，实现Runnable接口</li>
-<li>线程池作用：不需要每次去创建和销毁线程了，节约资源和相应时间更快</li>
-</ul>
-<h4 id="12-Sleep和wait"><a href="#12-Sleep和wait" class="headerlink" title="12.  Sleep和wait"></a>12.  <strong>Sleep和wait</strong></h4><ul>
-<li>Sleep()：是线程Thread类的静态方法，调用此方法会让当前线程暂停到指定时间，将执行机会给其他线程，但对象锁依然保持，结束后自动回复</li>
-<li>wait():调用此方法会导致当前线程放弃对象锁</li>
-</ul>
-<h4 id="13-线程与进程的区别"><a href="#13-线程与进程的区别" class="headerlink" title="13.  线程与进程的区别"></a>13.  <strong>线程与进程的区别</strong></h4><ul>
-<li>进程是资源的分配和调度的一个独立单元，线程是CPU调度的基本单位</li>
-<li>同一进程中可以包含多个线程，并且线程共享整个进程资源</li>
-</ul>
-<h4 id="14-Java设计模式（举例几个）"><a href="#14-Java设计模式（举例几个）" class="headerlink" title="14.  Java设计模式（举例几个）"></a>14.  <strong>Java设计模式（举例几个）</strong></h4><ul>
-<li>单例模式：①构造方法私有化，让除了自己类中能创建外其他地方都不能创建②在自己类中创建单实例③提供一个方法获取该实例对象</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">public class Single&#123;    </span><br><span class="line">  private static Single single=null;    //声明静态的单例对象的变量    </span><br><span class="line">  private Singleton()&#123;&#125;    //私有构造方法     </span><br><span class="line">  </span><br><span class="line">　//外部通过此方法可以获取对象      </span><br><span class="line">  public　synchronized static Singlet getSingle()&#123;</span><br><span class="line">    if(single == null)&#123;       </span><br><span class="line">　　     single=new Single()            </span><br><span class="line">    &#125;      </span><br><span class="line">    return single;    </span><br><span class="line">  &#125;    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>工厂模式：对象的创建交给工厂来创建,SpringIOC就是工厂模式？</li>
-<li>代理模式：Spring的AOP就是使用了动态代理。</li>
-</ul>
-<h4 id="15-MVC开发模式"><a href="#15-MVC开发模式" class="headerlink" title="15.  MVC开发模式"></a>15.  <strong>MVC开发模式</strong></h4><ul>
-<li>M    model模型层 应用程序中用于处理数据逻辑的部分</li>
-<li>V    view 视图层 应用程序中用于数据展示的部分</li>
-<li>C    controller 控制层应用程序中用于处理用户请求的部分\</li>
-</ul>
-<h4 id="16-Spring"><a href="#16-Spring" class="headerlink" title="16.  Spring"></a>16.  <strong>Spring</strong></h4><ul>
-<li><strong>IOC(控制反转)</strong><br><strong>理解:</strong> 对组件的对象进行控制权转移，从程序代码本身转移到外部容器，由容器来创建对象并管理对象之间的依赖关系；<br><strong>实现:</strong> 通过反射创建实例<ul>
-<li><strong>AOP(面向切面编程)</strong><br><strong>理解:</strong> 将程序中的交叉业务逻辑（安全，日志，事物），封装成一个切面，然后注入到目标对象（具体业务逻辑）中去，完善依赖注入;<br><strong>实现:</strong> 动态代理，JDK动态代理</li>
-</ul>
+<li>stream本身不会储存元素。</li>
+<li>它不会改变原对象，</li>
+<li><p>操作是延迟的执行的，也就是说它们会等到需要的结果才会执行</p>
+<p><strong>stream操作的三个步骤</strong> </p>
 </li>
 </ul>
-<h4 id="17-SpringMVC-原理"><a href="#17-SpringMVC-原理" class="headerlink" title="17.  SpringMVC 原理"></a>17.  <strong>SpringMVC 原理</strong></h4><ul>
-<li>(1):客户端的所有请求都交给前端控制器DispatcherServlet来处理，</li>
-<li>(2):DispatcherServlet收到请求后，将根据请求信息（URL，请求头，参数，等）以及HanderMapping的配置找到处理该请求的Controller</li>
-<li>(3):Conroller调用业务逻辑处理后，返回ModelAndView</li>
-<li>(4):DispatcherServlet查询一个或多个ViewResoler视图解析器，找到ModelAndView指定的视图。</li>
-<li>(5):视图负责将结果显示到客户端<br>##总结<br>由于本人太过疏忽Java基础，些项目也遇到过很多坑，对于即将毕业的我面试过几家，都因基础太差而被淘汰，深感懊悔，特此写下这些！</li>
+<ol>
+<li>创建stream流：一个数据源（如：集合，数组），获取一个流</li>
+<li>中间操作：对数据源进行处理</li>
+</ol>
+<ul>
+<li>filter：从流中排除某些元素；</li>
+<li>limit：使其流不超过给定数量；</li>
+<li>skip（n）：跳过n个元素，获取n个元素后面的元素，如元素不足n个，则返回一个空流；</li>
+<li>distinct:筛选通过流所产生的元素的hashCode()和equals()去除重复元素；</li>
+<li>map：将元素转换成其他形式或提取元素；</li>
+<li>flatMap：接受一个函数作为参数，将流中的每个值都换成另一个流，然后把所有的流连接成一个流</li>
+<li>sorted：排序</li>
+<li>其他：看文档；</li>
 </ul>
+<ol start="3">
+<li>终止操作：产生结果</li>
+</ol>
+<ul>
+<li>allMatch：检查是否匹配元素；</li>
+<li>anyMatch：检查是否至少一个元素；</li>
+<li>noneMatch：检查是否没有匹配所有元素；</li>
+<li>findFirst：返回第一个元；</li>
+<li>findAny：返回当前任意元素；</li>
+<li>forEach：循环</li>
+<li>collect：转换</li>
+</ul>
+<p>下面是我写的一些例子，可以看下：</p>
+<p> <strong>1. 过滤，筛选，去重</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Integer&gt; list= Arrays.asList(1,3,6,2,7,4,5,9,8);</span><br><span class="line">//过滤出小于5的元素</span><br><span class="line">List&lt;Integer&gt; result=list.stream().filter(i -&gt; i&gt;5 ).collect(Collectors.toList());</span><br><span class="line">System.out.println(result);</span><br></pre></td></tr></table></figure></p>
+<p>结果：result=[6, 7, 9, 8]<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Integer&gt; list= Arrays.asList(1,3,6,2,7,4,5,9,8);</span><br><span class="line">//过滤出小于3的元素,返回的数量不得超过2个元素</span><br><span class="line">List&lt;Integer&gt; result=list.stream().filter(i -&gt; i&gt;3 ).limit(2).collect(Collectors.toList());</span><br><span class="line">System.out.println(result);</span><br></pre></td></tr></table></figure></p>
+<p>结果：result=[6, 7]  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Integer&gt; list= Arrays.asList(1,3,6,2,7,4,5,9,8);</span><br><span class="line">//过滤出小于3的元素,返回的数量不得超过2个元素</span><br><span class="line">List&lt;Integer&gt; result=list.stream().skip(2).collect(Collectors.toList());</span><br><span class="line">System.out.println(result);</span><br></pre></td></tr></table></figure>
+<p>结果：result=[6, 2, 7, 4, 5, 9, 8]</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Integer&gt; list= Arrays.asList(1,3,1,3,7,4,5,9,8);</span><br><span class="line">//去重</span><br><span class="line">List&lt;Integer&gt; result=list.stream().distinct().collect(Collectors.toList());</span><br><span class="line">System.out.println(result);</span><br></pre></td></tr></table></figure>
+<p>结果：result=[1, 3, 7, 4, 5, 9, 8]</p>
+<p> <strong>2. map和flatMap</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Integer&gt; list= Arrays.asList(1,6,2,3,7,4,5,9,8);</span><br><span class="line">//获取list集合每个元素的平方，在赋给result</span><br><span class="line">List&lt;Integer&gt; result=list.stream().map(i-&gt; i*i).collect(Collectors.toList());</span><br><span class="line">System.out.println(result);</span><br></pre></td></tr></table></figure></p>
+<p>结果：result=[1, 36, 4, 9, 49, 16, 25, 81, 64]</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">String [] list1= &#123;&quot;abc&quot;,&quot;defg&quot;,&quot;hijk&quot;,&quot;lmn&quot;,&quot;opq&quot;,&quot;rst&quot;&#125;;</span><br><span class="line">String [] lisy2=&#123;&quot;uvw&quot;,&quot;xyz&quot;&#125;;</span><br><span class="line">//两个数组合并，并输出 </span><br><span class="line">Stream.of(list1,lisy2).flatMap(i-&gt; Stream.of(i)).forEach(System.out::print);</span><br></pre></td></tr></table></figure>
+<p>结果：abcdefghijklmnopqrstuvwxyz</p>
+<p> <strong>3. 排序</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Integer&gt; list= Arrays.asList(1,6,2,3,7,4,5,9,8);</span><br><span class="line">//排序，并以逗号分开</span><br><span class="line">list.stream().sorted().map(i-&gt;i+&quot;,&quot;).forEach(System.out::print);</span><br><span class="line">//结果：1,2,3,4,5,6,7,8,9,</span><br><span class="line"></span><br><span class="line">//倒序，并以逗号分开</span><br><span class="line">list.stream().sorted(Comparator.reverseOrder()).map(i-&gt;i+&quot;,&quot;).forEach(System.out::print);</span><br><span class="line"></span><br><span class="line">//结果：9,8,7,6,5,4,3,2,1,</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">class User&#123;</span><br><span class="line">    private String name;</span><br><span class="line">    private int age;</span><br><span class="line">｝</span><br><span class="line">//省略构造方法，get，set，toString；</span><br><span class="line"></span><br><span class="line">List&lt;User&gt; users=new ArrayList&lt;&gt;();</span><br><span class="line">users.add(new User(&quot;张三&quot;,19));</span><br><span class="line">users.add(new User(&quot;李四&quot;,16));</span><br><span class="line">users.add(new User(&quot;王五&quot;,35));</span><br><span class="line">users.add(new User(&quot;狗二&quot;,11));</span><br><span class="line">//原始数据集合</span><br><span class="line">System.out.println(users);</span><br><span class="line"></span><br><span class="line">//根据用户年龄排序</span><br><span class="line">users.stream().sorted(Comparator.comparing(User::getAge)).forEach(System.out::print);</span><br><span class="line">//根据年龄倒序</span><br><span class="line">users.stream().sorted(Comparator.comparing(User::getAge).reversed()).forEach(System.out::print);</span><br></pre></td></tr></table></figure>
+<p>原始数据：[User{name=’张三’, age=19}, User{name=’李四’, age=16}, User{name=’王五’, age=35}, User{name=’狗二’, age=11}]  </p>
+<p>排序后的数据：User{name=’狗二’, age=11}User{name=’李四’, age=16}User{name=’张三’, age=19}User{name=’王五’, age=35}  </p>
+<p>倒序后的数据：User{name=’王五’, age=35}User{name=’张三’, age=19}User{name=’李四’, age=16}User{name=’狗二’, age=11}</p>
+<p><strong>4.对集合元素的运算操作</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Integer&gt; list= Arrays.asList(1,3,6,2,7,4,5,9,8);</span><br><span class="line"></span><br><span class="line">IntSummaryStatistics summaryStatistics=list.stream().mapToInt(x-&gt;x).summaryStatistics();</span><br><span class="line"></span><br><span class="line">System.out.println(&quot;最大值：&quot;+summaryStatistics.getMax());</span><br><span class="line">System.out.println(&quot;最小值：&quot;+summaryStatistics.getMin());</span><br><span class="line">System.out.println(&quot;平均值：&quot;+summaryStatistics.getAverage());</span><br><span class="line">System.out.println(&quot;总和：&quot;+summaryStatistics.getSum());</span><br><span class="line">System.out.println(&quot;个数：&quot;+summaryStatistics.getCount());</span><br></pre></td></tr></table></figure>
+<p>结果：最大值：9；最小值：1；平均值：5.0；总和：45；个数：9</p>
+<p><strong>5.查找与匹配</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Integer&gt; list= Arrays.asList(1,3,6,2,7,4,5,9,8);</span><br><span class="line"></span><br><span class="line">System.out.println(&quot;是否都大于0:&quot;+list.stream().allMatch(i-&gt; i&gt;0));</span><br><span class="line">//结果为：true</span><br><span class="line"></span><br><span class="line">System.out.println(&quot;是否至少有一个能被2整出:&quot;+list.stream().anyMatch(i-&gt;i%2==0));</span><br><span class="line">//结果为：true</span><br><span class="line"></span><br><span class="line">System.out.println(&quot;是否所有元素+1都不等于100:&quot;+list.stream().noneMatch(i-&gt;i+1==100));</span><br><span class="line">//结果为：true</span><br><span class="line"></span><br><span class="line">System.out.println(&quot;返回第一个元素:&quot;+list.stream().findFirst());</span><br><span class="line">//结果为：Optional[1]</span><br></pre></td></tr></table></figure>
+<p><strong>6.分组</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">class User&#123;</span><br><span class="line">    private String name;</span><br><span class="line">    private int age;</span><br><span class="line">｝</span><br><span class="line">//省略构造方法，get，set，toString；</span><br><span class="line"></span><br><span class="line">List&lt;User&gt; users=new ArrayList&lt;&gt;();</span><br><span class="line">    users.add(new User(&quot;张三&quot;,19));</span><br><span class="line">    users.add(new User(&quot;李四&quot;,16));</span><br><span class="line">    users.add(new User(&quot;王五&quot;,35));</span><br><span class="line">    users.add(new User(&quot;狗二&quot;,11));</span><br><span class="line">    users.add(new User(&quot;狗二&quot;,43));</span><br><span class="line">    users.add(new User(&quot;王五&quot;,12));</span><br><span class="line">    Map&lt;String ,List&lt;User&gt;&gt; map=users.stream().collect(Collectors.groupingBy(User::getName));</span><br><span class="line">    map.forEach( (k,v)-&gt;&#123;</span><br><span class="line">        System.out.print(&quot;键：&quot;+k);</span><br><span class="line">        System.out.println(&quot;;值：&quot;+v);</span><br><span class="line">     &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>结果：<br>键：;值：[User{name=’李四’, age=16}]<br>键：;值：[User{name=’张三’, age=19}]<br>键：;值：[User{name=’王五’, age=35}, User{name=’王五’, age=12}]<br>键：;值：[User{name=’狗二’, age=11}, User{name=’狗二’, age=43}]</p>
+<p><strong>注意：中间操作是按顺序执行的，并行流使用：parallelStream()</strong></p>
+<h4 id="3-其他"><a href="#3-其他" class="headerlink" title="3. 其他"></a>3. 其他</h4><ol>
+<li>java8新增了Optional：防止空指针</li>
+</ol>
+<ul>
+<li>isPresent()方法判断是否为空；</li>
+<li>get():获取值</li>
+</ul>
+<ol start="2">
+<li>java8的时间API是JSR-310的实现，它的实现目标是克服旧的日期时间实现中所有的缺陷，特点：不变性，这对多线程环境有好处；</li>
+</ol>
+<ul>
+<li>LocalDate.now(): 获取当前日期；格式：yyyy-MM-dd</li>
+<li>LocalTime.now(): 获取当前时间；格式:HH:mm:ss</li>
+<li>LocalDateTime.now()：获取当前日期时间 格式 yyyy-MM-dd HH:mm:ss</li>
+</ul>
+<p>3.java8的接口支持已有默认实现方法：关键字：default ；</p>
+<h4 id="4-总结"><a href="#4-总结" class="headerlink" title="4. 总结"></a>4. 总结</h4><p>现在java版本都更新到10了。。虽然变化不是很多，但还是有很多知识需要了解的。还有，jdk10，出了var关键字：类型推断机制；这是要向javascript看齐的节奏</p>
 
       
     </div>
@@ -549,8 +540,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/06/05/SpringBoot2-x-SpringSecurit-JWT-三-前后端分离进阶/" rel="next" title="SpringBoot2.x+SpringSecurit+JWT(三)前后端分离进阶">
-                <i class="fa fa-chevron-left"></i> SpringBoot2.x+SpringSecurit+JWT(三)前后端分离进阶
+              <a href="/2018/06/11/SpringBoot2-x-Spring-Data-Jpa整合简书/" rel="next" title="SpringBoot2.x+Spring Data Jpa整合简书">
+                <i class="fa fa-chevron-left"></i> SpringBoot2.x+Spring Data Jpa整合简书
               </a>
             
           </div>
@@ -558,10 +549,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/06/11/SpringBoot2-x-Spring-Data-Jpa整合简书/" rel="prev" title="SpringBoot2.x+Spring Data Jpa整合简书">
-                SpringBoot2.x+Spring Data Jpa整合简书 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -750,7 +737,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-Java编译和运行过程"><span class="nav-number">1.</span> <span class="nav-text">1. Java编译和运行过程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-Java面向对象四个基本特性"><span class="nav-number">2.</span> <span class="nav-text">2. Java面向对象四个基本特性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-Java中对象的生命周期"><span class="nav-number">3.</span> <span class="nav-text">3.  Java中对象的生命周期</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-Java-8种数据类型"><span class="nav-number">4.</span> <span class="nav-text">4.  Java 8种数据类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-与equals区别"><span class="nav-number">5.</span> <span class="nav-text">5.  ==与equals区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-String，StringBuffer，StringBuilder区别"><span class="nav-number">6.</span> <span class="nav-text">6.  String，StringBuffer，StringBuilder区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-ArrayList与LinkedList区别"><span class="nav-number">7.</span> <span class="nav-text">7.  ArrayList与LinkedList区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-HashMap和HashTable的区别"><span class="nav-number">8.</span> <span class="nav-text">8.  HashMap和HashTable的区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#9-借口-interface-和抽象类-abstract-class"><span class="nav-number">9.</span> <span class="nav-text">9.  借口(interface)和抽象类(abstract class)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#10-字符流和字节流"><span class="nav-number">10.</span> <span class="nav-text">10.  字符流和字节流</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#11-Java线程"><span class="nav-number">11.</span> <span class="nav-text">11.  Java线程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#12-Sleep和wait"><span class="nav-number">12.</span> <span class="nav-text">12.  Sleep和wait</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#13-线程与进程的区别"><span class="nav-number">13.</span> <span class="nav-text">13.  线程与进程的区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#14-Java设计模式（举例几个）"><span class="nav-number">14.</span> <span class="nav-text">14.  Java设计模式（举例几个）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#15-MVC开发模式"><span class="nav-number">15.</span> <span class="nav-text">15.  MVC开发模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#16-Spring"><span class="nav-number">16.</span> <span class="nav-text">16.  Spring</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#17-SpringMVC-原理"><span class="nav-number">17.</span> <span class="nav-text">17.  SpringMVC 原理</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#运用Java有一段时间了，前段时间了解了Java8的新特性，感觉简直就是非常棒的一次更新。。下面是我所学习Java8中的一些知识！！"><span class="nav-number">1.</span> <span class="nav-text">运用Java有一段时间了，前段时间了解了Java8的新特性，感觉简直就是非常棒的一次更新。。下面是我所学习Java8中的一些知识！！</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-Lambda表达式"><span class="nav-number">1.1.</span> <span class="nav-text">1. Lambda表达式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-Stream-API（java-util-stream-）"><span class="nav-number">1.2.</span> <span class="nav-text">2. Stream API（java.util.stream.*）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-其他"><span class="nav-number">1.3.</span> <span class="nav-text">3. 其他</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-总结"><span class="nav-number">1.4.</span> <span class="nav-text">4. 总结</span></a></li></ol></li></ol></div>
             
 
           </div>
